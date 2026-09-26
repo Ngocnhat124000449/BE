@@ -4,6 +4,7 @@ import cors from "cors";
 import swaggerUi from "swagger-ui-express";
 import { getPool } from "./config/db.config.js";
 import { swaggerSpec } from "./config/swagger.config.js";
+import authRoutes from "./routes/auth.routes.js";
 
 const app = express();
 const PORT = Number(process.env.PORT ?? 3000);
@@ -12,7 +13,7 @@ app.use(helmet());
 app.use(cors());
 app.use(express.json());
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-
+app.use("/api/auth", authRoutes);
 /**
  * @swagger
  * /health:
