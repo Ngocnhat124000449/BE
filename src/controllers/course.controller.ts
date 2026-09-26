@@ -1,14 +1,9 @@
 import type { Request, Response } from "express";
 import * as service from "../services/course.service.js";
-import { AppError, fail, getErrorMessage, ok } from "../utils/apiResponse.util.js";
 
-function sendError(res: Response, error: unknown): void {
-  if (error instanceof AppError) {
-    res.status(error.statusCode).json(fail(error.message));
-    return;
-  }
-  res.status(500).json(fail(getErrorMessage(error)));
-}
+import { ok, sendError } from "../utils/apiResponse.util.js";
+
+
 
 export async function getAllCourses(_req: Request, res: Response): Promise<void> {
   try {

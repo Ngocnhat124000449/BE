@@ -1,11 +1,9 @@
 import * as repo from "../repositories/course.repository.js";
-import { AppError } from "../utils/apiResponse.util.js";
-import type { ICourseDTO, ICourseReq } from "../dtos/course.dto.js";
 
-function sqlErrorNumber(error: unknown): number | undefined {
-  const n = (error as { number?: unknown }).number;
-  return typeof n === "number" ? n : undefined;
-}
+import type { ICourseDTO, ICourseReq } from "../dtos/course.dto.js";
+import { AppError, sqlErrorNumber } from "../utils/apiResponse.util.js";
+
+
 
 export function parseId(raw: string): number {
   const id = Number(raw);

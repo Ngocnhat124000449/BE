@@ -6,6 +6,7 @@ import { getPool } from "./config/db.config.js";
 import { swaggerSpec } from "./config/swagger.config.js";
 import authRoutes from "./routes/auth.routes.js";
 import courseRoutes from "./routes/course.routes.js";
+import enrollmentRoutes from "./routes/enrollment.routes.js";
 
 const app = express();
 const PORT = Number(process.env.PORT ?? 3000);
@@ -16,6 +17,7 @@ app.use(express.json());
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use("/api/auth", authRoutes);
 app.use("/api/courses", courseRoutes);
+app.use("/api/enrollments", enrollmentRoutes);
 /**
  * @swagger
  * /health:
